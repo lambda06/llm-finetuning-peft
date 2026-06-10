@@ -1,0 +1,55 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# QLoRA Fine-Tuning Configuration
+# TinyLlama-1.1B on Stanford Alpaca (Instruction Following)
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Model ─────────────────────────────────────────────────────────────────────
+model:
+  name: "TinyLlama/TinyLlama-1.1B-Chat-v1.0"   # HuggingFace model ID
+  max_seq_length: 512                            # Max tokens per training sample
+
+# ── Dataset ───────────────────────────────────────────────────────────────────
+dataset:
+  name: "yahma/alpaca-cleaned"                   # HuggingFace dataset ID
+  train_size: 2000                               # Samples used for training
+  test_size: 200                                 # Samples held out for evaluation
+  seed: 42                                       # For reproducibility
+
+# ── Quantization (the "Q" in QLoRA) ──────────────────────────────────────────
+quantization:
+  load_in_4bit: true                             # Compress model weights to 4-bit
+  bnb_4bit_compute_dtype: "float16"              # Compute in float16 for speed
+  bnb_4bit_quant_type: "nf4"                    # NormalFloat4 — best for LLMs
+  bnb_4bit_use_double_quant: true                # Quantize the quantization constants too
+
+# ── LoRA (the "LoRA" in QLoRA) ────────────────────────────────────────────────
+lora:
+  r: 8                                           # Rank — adapter capacity (4/8/16 in ablation)
+  lora_alpha: 16                                 # Scaling factor (usually = 2 * r)
+  lora_dropout: 0.05                             # Dropout for regularization
+  bias: "none"                                   # Don't train bias terms
+  task_type: "CAUSAL_LM"                         # We're fine-tuning a causal language model
+  target_modules:                                # Which layers to apply LoRA to
+    - "q_proj"                                   # Query projection (attention)
+    - "k_proj"                                   # Key projection (attention)
+    - "v_proj"                                   # Value projection (attention)
+    - "o_proj"                                   # Output projection (attention)
+
+# ── Training ──────────────────────────────────────────────────────────────────
+training:
+  output_dir: "./outputs"                        # Where to save checkpoints
+  num_train_epochs: 3                            # Full passes over the training data
+  per_device_train_batch_size: 4                 # Samples per GPU step
+  gradient_accumulation_steps: 4                 # Accumulate before updating weights
+  learning_rate: 2.0e-4                          # How fast the model learns
+  lr_scheduler_type: "cosine"                    # Learning rate decay schedule
+  warmup_ratio: 0.03                             # Warmup for first 3% of steps
+  weight_decay: 0.001                            # L2 regularization
+  fp16: true                                     # Use 16-bit floats for speed
+  logging_steps: 10                              # Log loss every N steps
+  save_steps: 100                                # Save checkpoint every N steps
+  save_total_limit: 2                            # Keep only last 2 checkpoints
+
+# ── Ablation Study ────────────────────────────────────────────────────────────
+ablation:
+  lora_ranks: [4, 8, 16]                         # Ranks to compare in ablation study

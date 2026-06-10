@@ -1,0 +1,29 @@
+# ── Core ML Framework ──────────────────────────────────────────────────────────
+torch>=2.1.0                  # PyTorch — the foundation everything is built on
+torchvision>=0.16.0           # Required by some torch utilities
+
+# ── HuggingFace Ecosystem ──────────────────────────────────────────────────────
+transformers>=4.36.0          # Load pre-trained models (TinyLlama) and tokenizers
+datasets>=2.16.0              # Load and preprocess datasets (Alpaca)
+peft>=0.7.0                   # Apply LoRA/QLoRA adapters to models
+trl>=0.7.4                    # SFTTrainer — supervised fine-tuning made easy
+accelerate>=0.25.0            # Handles CPU/GPU device placement automatically
+huggingface_hub>=0.20.0       # Push models/adapters to HuggingFace Hub
+
+# ── Quantization (QLoRA) ───────────────────────────────────────────────────────
+bitsandbytes>=0.41.0          # Enables 4-bit quantization (QLoRA) on GPU
+
+# ── Evaluation ─────────────────────────────────────────────────────────────────
+evaluate>=0.4.0               # HuggingFace evaluation library
+rouge-score>=0.1.2            # ROUGE metric for text generation quality
+
+# ── Visualization ──────────────────────────────────────────────────────────────
+matplotlib>=3.8.0             # Plot training loss curves and evaluation charts
+pandas>=2.1.0                 # Data manipulation for results tables
+
+# ── Demo ───────────────────────────────────────────────────────────────────────
+gradio>=4.0.0                 # Build the interactive before/after demo UI
+
+# ── Notebook Support ───────────────────────────────────────────────────────────
+jupyter>=1.0.0                # Run notebooks locally if needed
+ipywidgets>=8.0.0             # Progress bars and interactive widgets in notebooks
