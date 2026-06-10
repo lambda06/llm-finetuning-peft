@@ -21,7 +21,7 @@ Instead of updating billions of parameters (which requires expensive A100 GPUs),
 2. **Injects low-rank adapter matrices** (LoRA) into attention layers
 3. **Trains only the adapters** (~1% of total parameters) while the base model stays frozen
 
-The result: fine-tuning a 1.1B parameter model on a **free Google Colab T4 GPU** in under an hour.
+The result: fine-tuning a 1.1B parameter model on a **Google Colab GPU**.
 
 ---
 
