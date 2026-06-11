@@ -30,7 +30,7 @@ import os
 import yaml
 import torch
 from transformers import TrainingArguments
-from trl import SFTTrainer, DataCollatorForCompletionOnlyLM
+from trl import SFTTrainer
 
 from data_utils import load_alpaca_dataset
 from model_utils import load_model_and_tokenizer, print_trainable_parameters
