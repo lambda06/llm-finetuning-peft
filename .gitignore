@@ -22,13 +22,21 @@ env/
 *.env
 secrets.yaml
 
-# Model weights & checkpoints (can be GBs — store on HuggingFace Hub instead)
-outputs/
-checkpoints/
+# Model weights (large binaries — store on HuggingFace Hub instead)
 *.bin
 *.safetensors
 *.pt
 *.pth
+
+# Checkpoint folders (intermediate saves during training)
+checkpoints/
+
+# Allow outputs/ folder but exclude large weight files inside it
+# (adapter_config.json and training_metrics.yaml WILL be tracked)
+outputs/**/adapter_model*
+outputs/**/model*
+outputs/**/tokenizer.model
+outputs/**/pytorch_model*
 
 # HuggingFace cache
 .cache/
