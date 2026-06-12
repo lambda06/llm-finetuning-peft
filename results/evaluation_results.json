@@ -1,0 +1,20 @@
+{
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "dataset": "yahma/alpaca-cleaned",
+  "lora_rank": 8,
+  "base_model": {
+    "rouge1": 0.318,
+    "rouge2": 0.1347,
+    "rougeL": 0.2352
+  },
+  "finetuned_model": {
+    "rouge1": 0.4397,
+    "rouge2": 0.2148,
+    "rougeL": 0.3215
+  },
+  "improvement": {
+    "rouge1_pct": 38.26,
+    "rouge2_pct": 59.44,
+    "rougeL_pct": 36.67
+  }
+}

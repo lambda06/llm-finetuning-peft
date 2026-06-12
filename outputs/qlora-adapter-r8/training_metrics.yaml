@@ -1,0 +1,10 @@
+epochs: 3
+final_loss: 1.0499
+initial_loss: 1.573
+lora_alpha: 16
+lora_rank: 8
+loss_reduction_pct: 34.22
+model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+total_steps: 375
+train_samples: 2000
+training_time_minutes: 27.3

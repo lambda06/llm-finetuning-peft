@@ -1,0 +1,32 @@
+[
+  {
+    "label": "List task",
+    "instruction": "Give three tips for staying healthy.",
+    "prompt": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nGive three tips for staying healthy.\n\n### Response:",
+    "base_response": "1. Exercise regularly: Regular exercise helps to maintain a healthy weight, improve cardiovascular health, and reduce the risk of chronic diseases such as diabetes, high blood pressure, and heart disease.\n\n2. Eat a balanced diet: A balanced diet includes a variety of fruits, vegetables, whole grains, lean proteins, and healthy fats. Avoid processed foods, sugary drinks, and high-fat meats.\n\n3. Get enough sleep: Getting enough sleep helps to reduce stress, improve memory, and boost the immune system. Aim for 7-9 hours of sleep per night."
+  },
+  {
+    "label": "Explanation task",
+    "instruction": "Explain what photosynthesis is in simple terms.",
+    "prompt": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nExplain what photosynthesis is in simple terms.\n\n### Response:",
+    "base_response": "Photosynthesis is the process by which plants and some other organisms convert carbon dioxide and water into glucose (a type of sugar) using sunlight as a source of energy. It is a complex process that involves the conversion of carbon dioxide into glucose through the production of oxygen. The process is essential for the survival of plants and other organisms, as it provides them with the energy they need to grow and reproduce."
+  },
+  {
+    "label": "Creative task",
+    "instruction": "Write a short poem about the night sky.",
+    "prompt": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nWrite a short poem about the night sky.\n\n### Response:",
+    "base_response": "The night sky, a canvas of stars,\nA symphony of light and shade,\nA canvas of beauty, a canvas of wonder,\nA canvas of the universe's grandeur.\n\nThe stars, twinkling like diamonds,\nA million sparkling jewels,\nA million stars, a million lights,\nA million stars, a million shades.\n\nThe moon, a silver orb,\nA beacon of hope and light,\nA beacon of hope and light,\nA beacon of hope and light.\n\nThe planets, a cosmic dance,\nA dance of colors and hues,\nA dance of colors and hues,\nA dance of colors and hues.\n\nThe galaxies, a cosmic tapestry,\nA tapestry of stars and light,\nA tapestry of stars and light,\nA tapestry of stars and light."
+  },
+  {
+    "label": "Reasoning task",
+    "instruction": "What are the advantages and disadvantages of remote work?",
+    "prompt": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nWhat are the advantages and disadvantages of remote work?\n\n### Response:",
+    "base_response": "Advantages:\n1. Flexibility: Remote work allows employees to work from anywhere, which can lead to increased productivity and reduced stress.\n2. Increased job satisfaction: Remote work can lead to increased job satisfaction, as employees can work from home and have more control over their work environment.\n3. Reduced commuting costs: Remote work can reduce commuting costs, as employees can save money on transportation costs.\n\nDisadvantages:\n1. Lack of face-to-face interaction: Remote work can lead to a lack of face-to-face interaction, which can lead to feelings of isolation and loneliness.\n2. Lack of social interaction: Remote work can lead to a lack of social interaction, as employees may not have the opportunity to interact with coworkers in person.\n3. Lack of work-life balance: Remote work can lead to a lack"
+  },
+  {
+    "label": "Factual task",
+    "instruction": "Name five programming languages and what they are commonly used for.",
+    "prompt": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nName five programming languages and what they are commonly used for.\n\n### Response:",
+    "base_response": "1. Python\n2. JavaScript\n3. Java\n4. C#\n5. Ruby\n\nThese programming languages are commonly used for various tasks such as data analysis, web development, game development, and more. They are widely used in the tech industry and are essential for developing software applications."
+  }
+]

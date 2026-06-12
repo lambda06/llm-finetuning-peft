@@ -146,6 +146,7 @@ def load_base_model(model_name: str) -> AutoModelForCausalLM:
         model_name,
         quantization_config=bnb_config,
         device_map="auto",           # Automatically use GPU if available
+        torch_dtype=torch.float16,   # Prevent .to() errors and force master dtype
         trust_remote_code=True,
     )
 

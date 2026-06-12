@@ -29,8 +29,8 @@ Or from command line (on a GPU machine):
 import os
 import yaml
 import torch
-from transformers import TrainingArguments
-from trl import SFTTrainer
+from trl import SFTTrainer, SFTConfig
+
 
 from data_utils import load_alpaca_dataset
 from model_utils import load_model_and_tokenizer, print_trainable_parameters
@@ -65,7 +65,7 @@ def load_config(config_path: str = "configs/qlora_config.yaml") -> dict:
 # Training Arguments
 # ─────────────────────────────────────────────────────────────────────────────
 
-def get_training_args(config: dict) -> TrainingArguments:
+def get_training_args(config: dict) -> SFTConfig:
     """
     Creates HuggingFace TrainingArguments from our config.
 
@@ -145,7 +145,7 @@ def get_training_args(config: dict) -> TrainingArguments:
     """
     t = config["training"]
 
-    return TrainingArguments(
+    return SFTConfig(
         output_dir=t["output_dir"],
         num_train_epochs=t["num_train_epochs"],
         per_device_train_batch_size=t["per_device_train_batch_size"],
@@ -161,6 +161,8 @@ def get_training_args(config: dict) -> TrainingArguments:
         optim="paged_adamw_32bit",   # Memory-efficient Adam optimizer (QLoRA default)
         report_to="none",            # Disable WandB / other loggers
         push_to_hub=False,           # We'll push manually after evaluating
+        dataset_text_field="text",   # New requirement in latest trl
+        max_seq_length=config["model"]["max_seq_length"], # New requirement in latest trl
     )
 
 
@@ -265,6 +267,11 @@ def run_training(
           f"{config['training']['gradient_accumulation_steps']} = "
           f"{config['training']['per_device_train_batch_size'] * config['training']['gradient_accumulation_steps']}")
     print(f"   Total training steps: ~{len(train_dataset) * config['training']['num_train_epochs'] // (config['training']['per_device_train_batch_size'] * config['training']['gradient_accumulation_steps'])}")
+
+    # HOTFIX: Force trainable params to float32 to prevent BFloat16 mixed-precision crashes
+    for param in model.parameters():
+        if param.requires_grad:
+            param.data = param.data.to(torch.float32)
 
     train_result = trainer.train()
 
