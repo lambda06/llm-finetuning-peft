@@ -31,10 +31,10 @@ The result: fine-tuning a 1.1B parameter model on a **Google Colab GPU**.
 
 | Metric | Base Model | Fine-Tuned (r=8) | Improvement |
 |---|---|---|---|
-| ROUGE-1 | — | — | — |
-| ROUGE-2 | — | — | — |
-| ROUGE-L | — | — | — |
-| Instruction Format | ❌ | ✅ | — |
+| ROUGE-1 | 0.3180 | 0.4397 | ▲ 38.3% |
+| ROUGE-2 | 0.1347 | 0.2148 | ▲ 59.4% |
+| ROUGE-L | 0.2352 | 0.3215 | ▲ 36.7% |
+| Instruction Format | ❌ Fails | ✅ Follows accurately | — |
 
 ---
 
@@ -44,9 +44,9 @@ One of the key experiments in this project: how does LoRA rank `r` affect qualit
 
 | LoRA Rank | Trainable Params | Training Time | ROUGE-L |
 |---|---|---|---|
-| r = 4 | — | — | — |
-| r = 8 | — | — | — |
-| r = 16 | — | — | — |
+| r = 4 | 1,126,400 | ~13.4 min | 0.3000 |
+| r = 8 | 2,252,800 | ~13.3 min | 0.3105 |
+| r = 16 | 4,505,600 | ~13.3 min | 0.3057 |
 
 > See [`notebooks/05_ablation_study.ipynb`](./notebooks/05_ablation_study.ipynb) for the full experiment.
 
@@ -86,7 +86,7 @@ llm-finetuning-peft/
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/YOUR_USERNAME/llm-finetuning-peft.git
+git clone https://github.com/lambda06/llm-finetuning-peft.git
 cd llm-finetuning-peft
 ```
 
@@ -140,14 +140,14 @@ Start with `01_data_exploration.ipynb` and work through sequentially.
 ## 📁 Model & Adapter
 
 The fine-tuned LoRA adapter is published on HuggingFace Hub:
-🤗 [YOUR_USERNAME/tinyllama-alpaca-qlora](https://huggingface.co/YOUR_USERNAME/tinyllama-alpaca-qlora)
+🤗 [lambda06/tinyllama-alpaca-qlora](https://huggingface.co/lambda06/tinyllama-alpaca-qlora)
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
 
 base_model = AutoModelForCausalLM.from_pretrained("TinyLlama/TinyLlama-1.1B-Chat-v1.0")
-model = PeftModel.from_pretrained(base_model, "YOUR_USERNAME/tinyllama-alpaca-qlora")
+model = PeftModel.from_pretrained(base_model, "lambda06/tinyllama-alpaca-qlora")
 ```
 
 ---

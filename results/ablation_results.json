@@ -1,0 +1,29 @@
+[
+  {
+    "rank": 4,
+    "trainable_params": 1126400,
+    "final_loss": 1.0852,
+    "training_time_min": 13.4,
+    "rouge1": 0.4191,
+    "rouge2": 0.1767,
+    "rougeL": 0.3
+  },
+  {
+    "rank": 8,
+    "trainable_params": 2252800,
+    "final_loss": 1.0648,
+    "training_time_min": 13.3,
+    "rouge1": 0.428,
+    "rouge2": 0.1739,
+    "rougeL": 0.3105
+  },
+  {
+    "rank": 16,
+    "trainable_params": 4505600,
+    "final_loss": 1.0442,
+    "training_time_min": 13.3,
+    "rouge1": 0.4289,
+    "rouge2": 0.1688,
+    "rougeL": 0.3057
+  }
+]
